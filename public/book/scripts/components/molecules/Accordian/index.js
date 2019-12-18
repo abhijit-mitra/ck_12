@@ -44,7 +44,6 @@ var Accordian = function(){
   };
 
   this.handleMenuItemClick= function(value) {
-      console.log(value);
   };
 
   this.render= function(selector){
@@ -66,7 +65,6 @@ var Accordian = function(){
     const self = this;
     const {props:{data}} = self;
     for(let i=0;i<data.length;i++){
-      console.log(`menu-header-wrapper-${data[i].id}`);
       const menuHeader = new MenuHeader();
       menuHeader.init(`#menu-header-wrapper-${data[i].id}`,{
         id:`menu-header-${data[i].id}`,
