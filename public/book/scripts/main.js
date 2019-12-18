@@ -17,7 +17,7 @@ var Shell = function(){
       const data = await res.json();
       const accordian = new Accordian();
       accordian.init('.container',{
-        data: data.response
+        data: data.response.sort((a,b)=>(a.sequenceNO - b.sequenceNO))
       });
       accordian.render();
     }

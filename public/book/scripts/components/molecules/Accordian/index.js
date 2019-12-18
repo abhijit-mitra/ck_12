@@ -23,12 +23,11 @@ var Accordian = function(){
       }else{
         const res = await fetch(`http://localhost:3000/api/book/maths/section/${props.value}`);
         data = await res.json();
-        data = data.response;
+        data = data.response[props.value].sort((a,b)=>(a.sequenceNO - b.sequenceNO));
         self.menuData={
           ...self.menuData,
-          ...data
+          [props.value]: data
         }
-        data = data[props.value]
       }
       self.renderMenuItems(`#menu-items-wrapper-${props.value}`, data || [], props.value);
     }else{
@@ -64,7 +63,7 @@ var Accordian = function(){
       menuHeader.init(`#menu-header-wrapper-${data[i].id}`,{
         id:`menu-header-${data[i].id}`,
         class:'',
-        label:data[i].title,
+        label:`${data[i].sequenceNO}. ${data[i].title}`,
         value:data[i].id
       });
       menuHeader.render();
