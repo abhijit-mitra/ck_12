@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>CK-12 Assignment - Table of Content</title>
+</head>
+<body></body>
+<script type="text/javascript" src='./scripts/main.js'></script>
+<script type="text/javascript" src='./scripts/components/Component.js'></script>
+<script type="text/javascript" src='./scripts/components/atoms/MenuHeader/index.js'></script>
+<script type="text/javascript" src='./scripts/components/atoms/MenuItem/index.js'></script>
+<script type="text/javascript" src='./scripts/components/molecules/Accordian/index.js'></script>
+<script>
+  const shell = new Shell();
+  shell.init('body');
+  shell.render();
+  shell.renderTOC('.container');
+</script>
+</html>

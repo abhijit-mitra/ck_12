@@ -1,0 +1,28 @@
+.p-10{
+  padding: 10px;
+}
+
+.p-20{
+  padding: 20px;
+}
+
+.p-30{
+  padding: 30px;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.theme-bg-color{
+  background-color: #00aba4;
+}
+
+.theme-color{
+  color: #00aba4;
+}
+
+.menu-header:hover{
+  background-color: #00aba4;
+  color:#fff;
+}
