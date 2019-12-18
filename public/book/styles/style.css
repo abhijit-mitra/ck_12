@@ -14,6 +14,10 @@
   padding: 30px;
 }
 
+.m-b-0{
+  margin-bottom: 0;
+}
+
 .cursor-pointer{
   cursor: pointer;
 }
@@ -33,4 +37,9 @@
 
 .h-100px{
   height: 100px;
+}
+
+.disabled{
+  pointer-events: none;
+  opacity: 0.5;
 }

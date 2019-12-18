@@ -11,6 +11,7 @@ var Accordian = function(){
 
   this.handleMenuHeaderClick= async function(props) {
     const self = this;
+    self.addClass(`menu-header-wrapper-${props.value}`, 'disabled');
     let data;
     self.open = {
       ...self.open,
@@ -20,20 +21,26 @@ var Accordian = function(){
     if(self.open[props.value]){
       if (self.menuData.hasOwnProperty(props.value)){
          data = self.menuData[props.value];
+         self.renderMenuItems(`#menu-items-wrapper-${props.value}`, data || [], props.value);
       }else{
         this.renderLoader(`#menu-items-wrapper-${props.value}`);
         const res = await fetch(`http://localhost:3000/api/book/maths/section/${props.value}`);
         data = await res.json();
-        data = data.response[props.value].sort((a,b)=>(a.sequenceNO - b.sequenceNO));
-        self.menuData={
-          ...self.menuData,
-          [props.value]: data
+        if(data.statusCode === 200){
+          data = data.response[props.value].sort((a,b)=>(a.sequenceNO - b.sequenceNO));
+          self.menuData={
+            ...self.menuData,
+            [props.value]: data
+          }
+          self.renderMenuItems(`#menu-items-wrapper-${props.value}`, data || [], props.value);
+        }else{
+          self.renderError(`#menu-items-wrapper-${props.value}`,data.response.message)
         }
       }
-      self.renderMenuItems(`#menu-items-wrapper-${props.value}`, data || [], props.value);
     }else{
       self.remove(`#menu-items-wrapper-${props.value}`);
     }
+    self.removeClass(`menu-header-wrapper-${props.value}`, 'disabled');
   };
 
   this.handleMenuItemClick= function(value) {
@@ -88,5 +95,12 @@ var Accordian = function(){
       const loader = new Loader();
       loader.init(selector);
       loader.render();
+    }
+
+    this.renderError = function(selector, title){
+      const self = this;
+      const error = new Error();
+      error.init(selector, {title});
+      error.render();
     }
   }

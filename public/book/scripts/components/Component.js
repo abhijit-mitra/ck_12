@@ -8,7 +8,7 @@ const Component = function(){
     this.uodateAttribute=function(elm_id, key, value){
       const self = this;
       const {props} = self;
-      const el = document.getElementById(props.id);
+      const el = document.getElementById(elm_id);
       el.setAttribute(key, value);
     };
     this.createElement=function(obj){
@@ -28,5 +28,13 @@ const Component = function(){
         const self = this;
         const wrapper = document.querySelector(query_elm);
         wrapper.innerHTML = '';
+    }
+    this.addClass=function(elm_id, className){
+      const elm = document.getElementById(elm_id);
+      elm.classList.add(className);
+    }
+    this.removeClass=function(elm_id, className){
+      const elm = document.getElementById(elm_id);
+      elm.classList.remove(className);
     }
 }
