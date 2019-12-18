@@ -6,6 +6,10 @@
   padding: 20px;
 }
 
+.p-20-30{
+  padding: 20px 30px;
+}
+
 .p-30{
   padding: 30px;
 }
@@ -25,4 +29,8 @@
 .menu-header:hover{
   background-color: #00aba4;
   color:#fff;
+}
+
+.h-100px{
+  height: 100px;
 }

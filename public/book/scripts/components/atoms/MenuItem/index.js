@@ -12,8 +12,13 @@ var MenuItems = function(){
       const wrapper = document.querySelector(selector);
       let dom = '';
       for(let i=0;i< data.length; i++){
-        dom +=`<div id='menu-item-${data[i].id}' class='menu-item border p-20 cursor-pointer theme-color'>
-                  <b>${data[i].sequenceNO}. ${data[i].title}</b>
+        dom +=`<div id='menu-item-${data[i].id}' class='row menu-item border p-20-30 theme-color'>
+                  <div class="col-md-10">
+                    <b>${data[i].sequenceNO}. ${data[i].title}</b>
+                  </div>
+                  <div class="col-md-2">
+                    <b>${data[i].status || 'INCOMPLETE'}</b>
+                  </div>
                 </div>`;
       }
       wrapper.innerHTML =  dom;

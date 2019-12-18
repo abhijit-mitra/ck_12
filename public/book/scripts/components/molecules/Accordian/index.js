@@ -21,6 +21,7 @@ var Accordian = function(){
       if (self.menuData.hasOwnProperty(props.value)){
          data = self.menuData[props.value];
       }else{
+        this.renderLoader(`#menu-items-wrapper-${props.value}`);
         const res = await fetch(`http://localhost:3000/api/book/maths/section/${props.value}`);
         data = await res.json();
         data = data.response[props.value].sort((a,b)=>(a.sequenceNO - b.sequenceNO));
@@ -62,9 +63,9 @@ var Accordian = function(){
       const menuHeader = new MenuHeader();
       menuHeader.init(`#menu-header-wrapper-${data[i].id}`,{
         id:`menu-header-${data[i].id}`,
-        class:'',
-        label:`${data[i].sequenceNO}. ${data[i].title}`,
-        value:data[i].id
+        title:`${data[i].sequenceNO}. ${data[i].title}`,
+        value:data[i].id,
+        status: data[i].status
       });
       menuHeader.render();
       menuHeader.addEvents('click', self.handleMenuHeaderClick.bind(self));
@@ -80,5 +81,12 @@ var Accordian = function(){
         data: data
     });
     menuItems.render();
+    }
+
+    this.renderLoader = function(selector){
+      const self = this;
+      const loader = new Loader();
+      loader.init(selector);
+      loader.render();
     }
   }
